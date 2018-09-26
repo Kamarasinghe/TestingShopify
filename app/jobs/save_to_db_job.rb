@@ -1,9 +1,12 @@
 class SaveToDbJob < ApplicationJob
   @queue = :saveToDb
 
-  def perform(product, product_count)
-    parsed = JSON.parse(product)
+  def perform(products)
+    products_parsed = JSON.parse(products)
     
-    puts 'THIS IS PRODUCT COUNT', product_count
+    products_parsed.each_with_index do |product, idx| 
+      puts "THIS IS PRODUCT #{idx}!!!!"
+      print product
+    end
   end
 end
