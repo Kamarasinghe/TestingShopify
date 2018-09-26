@@ -3,6 +3,7 @@ class SaveToDbJob < ApplicationJob
 
   def perform(product)
     puts 'THIS IS PRODUCT'
+    product = JSON.parse(product)
     print product
     puts ''
   end
