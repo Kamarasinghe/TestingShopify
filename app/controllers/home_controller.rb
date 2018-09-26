@@ -3,6 +3,6 @@ class HomeController < ShopifyApp::AuthenticatedController
     @products = ShopifyAPI::Product.find(:all, params: { limit: 2 })
     @webhooks = ShopifyAPI::Webhook.find(:all)
 
-    SaveToDbJob.perform_later(@products.products)
+    SaveToDbJob.perform_later(@products.to_json)
   end
 end
