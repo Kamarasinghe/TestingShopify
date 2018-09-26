@@ -17,9 +17,10 @@ class HomeController < ShopifyApp::AuthenticatedController
 
     save_product = { title: 'TEST FROM CONTROLLER', description: 'This is a description', vendor: 'Test Vendor' }
     product_to_save = Product.new(save_product)
-    if product_to_save.save
-      puts 'IT SAVED!!!!!'
-    end
+    
+    the_products = Product.all
+    puts 'THESE ARE THE PRODUCTS'
+    print the_products
     
     # products_json = @products.to_json
     # SaveToDbJob.perform_later(products_json, product_count)
