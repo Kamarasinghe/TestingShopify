@@ -20,7 +20,7 @@ class HomeController < ShopifyApp::AuthenticatedController
     
     the_products = Product.all
     puts 'THESE ARE THE PRODUCTS'
-    print the_products
+    print the_products.to_json
     
     # products_json = @products.to_json
     # SaveToDbJob.perform_later(products_json, product_count)
