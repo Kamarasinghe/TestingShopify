@@ -4,7 +4,7 @@ class SaveToDbJob < ApplicationJob
   def perform(product)
     puts 'THIS IS PRODUCT'
     product = JSON.parse(product)
-    print product
+    print product.length
     puts ''
   end
 end
