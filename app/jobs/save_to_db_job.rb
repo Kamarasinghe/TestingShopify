@@ -2,8 +2,7 @@ class SaveToDbJob < ApplicationJob
   @queue = :saveToDb
 
   def perform(product)
-    puts 'THIS IS PRODUCT'
     parsed = JSON.parse(product)
-    print parsed.length
+    print 'THIS IS PRODUCT ', parsed.length
   end
 end
