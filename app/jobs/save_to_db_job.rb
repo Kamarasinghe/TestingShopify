@@ -5,11 +5,9 @@ class SaveToDbJob < ApplicationJob
     products_parsed = JSON.parse(products)
     
     products_parsed.each_with_index do |product, idx| 
-      save_product = Product.new()
-      save_product.title = product.title
-      save_product.description = product.body_html
-      save_product.vendor = product.vendor
-      save_product.save 
+      save_product = { :title => product.title, :description => product.body_html, :vendor => product.vendor }
+      product_to_save = Product.new(save_product)
+      product_to_save.save
     end
 
   end
