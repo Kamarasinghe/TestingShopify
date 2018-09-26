@@ -1,6 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:abf2c5c5c7f4aacf6e09ff1dd59530e7@spinyfin.redistogo.com:10091/'
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
