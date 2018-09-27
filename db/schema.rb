@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180927214430) do
+ActiveRecord::Schema.define(version: 20180927223938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "images", id: :bigserial, force: :cascade do |t|
+  create_table "images", force: :cascade do |t|
     t.bigint   "product_id"
     t.text     "image_url"
     t.string   "variant_ids",              array: true
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20180927214430) do
     t.integer  "position"
   end
 
-  create_table "products", id: :bigserial, force: :cascade do |t|
+  create_table "products", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.string   "vendor"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20180927214430) do
     t.index ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true, using: :btree
   end
 
-  create_table "variants", id: :bigserial, force: :cascade do |t|
+  create_table "variants", force: :cascade do |t|
     t.bigint   "product_id"
     t.string   "title"
     t.decimal  "price"
