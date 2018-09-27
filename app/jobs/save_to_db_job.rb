@@ -1,21 +1,21 @@
 class SaveToDbJob < ApplicationJob
   @queue = :saveToDb
 
+  rescue_from(Exception) do |exception|
+    puts '^^^^^^^^^^^^^^^^^^^^'
+    puts exception.message
+    puts exception.backtrace
+    puts 'vvvvvvvvvvvvvvvvvvvvvv'
+  end
+
   def perform(products)
     products_parsed = JSON.parse(products)
-    puts '@@@@@@@@@@@@@@@@@@@@@'
-    puts products_parsed.inspect
-    puts '@@@@@@@@@@@@@@@@@@@@@'
-    
+
     products_parsed.each do |product|
       product_id = product['id']
       product_title = product['title']
       product_desc = product['body_html']
       product_vendor = product['vendor']
-
-      puts '&&&&&&&&&&&&&&&&&&&&&&'
-      puts product.inspect
-      puts '&&&&&&&&&&&&&&&&&&&&&&'
 
       response = Product.where(product_id: product_id).first_or_create({
         title: product_title, 

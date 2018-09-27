@@ -10,9 +10,6 @@ class HomeController < ShopifyApp::AuthenticatedController
     i = 1
     while (i <= product_count) do
       products = ShopifyAPI::Product.find(:all, :params => { :limit => 2, :page => i })
-      puts '%%%%%%%%%%%%%%%%%%%%%%%%%%'
-      puts products.inspect
-      puts '%%%%%%%%%%%%%%%%%%%%%%%%%%'
       products_json = products.to_json
       SaveToDbJob.perform_later(products_json)
       i += 1
