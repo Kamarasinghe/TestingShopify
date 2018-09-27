@@ -13,6 +13,10 @@ class SaveToDbJob < ApplicationJob
       product_desc = product['body_html']
       product_vendor = product['vendor']
 
+      puts '&&&&&&&&&&&&&&&&&&&&&&'
+      puts product.inspect
+      puts '&&&&&&&&&&&&&&&&&&&&&&'
+
       Product.where(product_id: product_id).first_or_create({
         title: product_title, 
         description: product_desc,
