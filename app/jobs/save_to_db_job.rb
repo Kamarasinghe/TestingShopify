@@ -12,7 +12,7 @@ class SaveToDbJob < ApplicationJob
     variants.each do |variant|
       variant_id = variant['id']
       variant_title = variant['title']
-      variant_price = variant['price']
+      variant_price = variant['price'] 
       variant_position = variant['position']
 
       Variant.where({
