@@ -16,10 +16,10 @@ class SaveToDbJob < ApplicationJob
       variant_position = variant['position']
 
       Variant.where(product_id: product_id, title: variant_title).first_or_create({
-        product_id = product_id,
-        title = variant_title,
-        price = variant_price,
-        position = variant_position
+        product_id: product_id,
+        title: variant_title,
+        price: variant_price,
+        position: variant_position
       })
     end
   end
