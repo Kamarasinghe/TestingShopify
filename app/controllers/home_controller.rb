@@ -15,8 +15,6 @@ class HomeController < ShopifyApp::AuthenticatedController
       i += 1
     end
 
-    print 'THESE ARE PRODUCTS', Product.all.to_json
-
     # save_product = { title: 'TEST FROM CONTROLLER', description: 'This is a description', vendor: 'Test Vendor' }
     # product_to_save = Product.new(save_product)
     
