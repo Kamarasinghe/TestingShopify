@@ -58,7 +58,7 @@ class SaveToDbJob < ApplicationJob
       })
 
       save_variants(product_variants, product_id)
-      # save_images(product_images, product_id)
+      save_images(product_images, product_id)
     end
   end
 end
