@@ -27,7 +27,7 @@ class SaveToDbJob < ApplicationJob
       })
 
       puts 'THIS IS THE RESPONSE !!!!!!!!!!'
-      response.inspect
+      puts response.inspect
       puts 'THIS IS THE RESPONSE @@@@@@@@@@'
 
     end
