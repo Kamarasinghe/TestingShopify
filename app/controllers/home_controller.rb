@@ -26,4 +26,3 @@ class HomeController < ShopifyApp::AuthenticatedController
     # SaveToDbJob.perform_later(products_json, product_count)
   end
 end
- 
