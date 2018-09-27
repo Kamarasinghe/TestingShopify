@@ -14,13 +14,18 @@ class SaveToDbJob < ApplicationJob
       variant_price = variant['price']
       variant_position = variant['position']
 
-      Variant.where([
+      response = Variant.where([
         'product_id = :product_id and title = :title', 
         { product_id: product_id, title: variant_title }
       ]).first_or_create({
         price: variant_price,
         position: variant_position
       })
+
+      puts 'THIS IS THE RESPONSE !!!!!!!!!!'
+      response.inspect
+      puts 'THIS IS THE RESPONSE !!!!!!!!!!'
+
     end
   end
 
