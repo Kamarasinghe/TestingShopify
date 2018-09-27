@@ -42,9 +42,9 @@ class SaveToDbJob < ApplicationJob
       product_variants = product['variants']
       product_images = product['images']
 
-      puts 'THIS IS THE PRODUCT'
-      puts product.inspect
-      puts 'THIS IS THE PRODUCT'
+      puts 'THIS IS THE PRODUCT!!!!!!!!!!!!!!!!!!!!!!!'
+      puts product['variants']
+      puts 'THIS IS THE PRODUCT$$$$$$$$$$$$$$$$$$$$$$$'
 
       Product.where(product_id: product_id).first_or_create({
         title: product_title, 
