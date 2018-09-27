@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180927155153) do
+ActiveRecord::Schema.define(version: 20180927170922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "images", force: :cascade do |t|
+    t.bigint   "product_id"
+    t.text     "image_url"
+    t.string   "variant_ids",              array: true
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
@@ -30,6 +38,14 @@ ActiveRecord::Schema.define(version: 20180927155153) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true, using: :btree
+  end
+
+  create_table "variants", force: :cascade do |t|
+    t.bigint   "product_id"
+    t.string   "title"
+    t.decimal  "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
