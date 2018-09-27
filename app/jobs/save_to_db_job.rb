@@ -17,11 +17,15 @@ class SaveToDbJob < ApplicationJob
       puts product.inspect
       puts '&&&&&&&&&&&&&&&&&&&&&&'
 
-      Product.where(product_id: product_id).first_or_create({
+      response = Product.where(product_id: product_id).first_or_create({
         title: product_title, 
         description: product_desc,
         vendor: product_vendor 
       })
+
+      puts '####################'
+      puts response.inspect
+      puts '####################'
 
       # if !Product.find_by(product_id: '1593687670897')
       #   puts 'IT DOES NOT EXIST'
