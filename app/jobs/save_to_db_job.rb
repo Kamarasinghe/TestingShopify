@@ -10,25 +10,32 @@ class SaveToDbJob < ApplicationJob
 
   def save_variants(variants, product_id)
     variants.each do |variant|
+      variant_id = variant['id']
       variant_title = variant['title']
       variant_price = variant['price']
       variant_position = variant['position']
 
-      puts 'THIS IS THE VARIANT !!!!!!!!!!!'
-      puts variant
-      puts 'THIS IS THE VARIANT !!!!!!!!!!!'
-
-      response = Variant.where(
-        { product_id: product_id, title: variant_title }
-      ).first_or_create({
+      Variant.where({
+        product_id: product_id, variant_id: variant_id 
+      }).first_or_create({
         price: variant_price,
         position: variant_position
       })
+    end
+  end
 
-      puts 'THIS IS THE RESPONSE !!!!!!!!!!'
-      puts response.errors.full_messages.first
-      puts 'THIS IS THE RESPONSE @@@@@@@@@@'
+  def save_images(images, product_id)
+    images.each do |image|
+      image_position = image['position']
+      image_url = image['src']
+      image_variant_ids = image['variant_ids']
 
+      Image.where({
+        product_id: product_id, position: image_position
+      }).first_or_create({
+        image_url: image_url,
+        variant_ids: image_variant_ids
+      })
     end
   end
 
@@ -50,6 +57,7 @@ class SaveToDbJob < ApplicationJob
       })
 
       save_variants(product_variants, product_id)
+      save_images(product_images, product_id)
     end
   end
 end
