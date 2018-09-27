@@ -14,6 +14,10 @@ class SaveToDbJob < ApplicationJob
       variant_price = variant['price']
       variant_position = variant['position']
 
+      puts 'THIS IS THE VARIANT !!!!!!!!!!!'
+      puts variant
+      puts 'THIS IS THE VARIANT !!!!!!!!!!!'
+
       response = Variant.where([
         'product_id = :product_id and title = :title', 
         { product_id: product_id, title: variant_title }
