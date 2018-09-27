@@ -10,7 +10,7 @@ class SaveToDbJob < ApplicationJob
       product_desc = product['body_html']
       product_vendor = product['vendor']
 
-      if !Product.where(product_id: '1593687670897').exists?
+      if !Product.find_by(product_id: '1593687670897')
         puts 'IT DOES NOT EXIST'
         # save_product = { product_id: product_id, title: product_title, description: product_desc, vendor: product_vendor }
         # product_to_save = Product.new(save_product)
