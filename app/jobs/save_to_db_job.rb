@@ -10,10 +10,8 @@ class SaveToDbJob < ApplicationJob
       product_vendor = product['vendor']
 
       save_product = { title: product_title, description: product_desc, vendor: product_vendor }
-      print 'THIS IS SAVE PRODUCT', save_product
-      # product_to_save = Product.new(save_product)
-      # product_to_save.save
+      product_to_save = Product.new(save_product)
+      product_to_save.save
     end
-
   end
 end
