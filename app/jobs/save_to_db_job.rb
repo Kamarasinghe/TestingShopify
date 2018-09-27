@@ -8,13 +8,12 @@ class SaveToDbJob < ApplicationJob
     puts '@@@@@@@@@@@@@@@@@@@@@@'
   end
 
-  def save_variants(variants)
+  def save_variants(variants, product_id)
     variants.each do |variant|
       puts '&&&&&&&&&&&&&&&&&&&'
       puts variant
       puts '&&&&&&&&&&&&&&&&&&&'
 
-      product_id = variant['product_id']
       variant_title = variant['title']
       variant_price = variant['price']
       variant_position = variant['position']
@@ -52,7 +51,7 @@ class SaveToDbJob < ApplicationJob
         vendor: product_vendor 
       })
 
-      save_variants(product_variants)
+      save_variants(product_variants, product_id)
     end
   end
 end
