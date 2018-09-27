@@ -25,11 +25,14 @@ class SaveToDbJob < ApplicationJob
     end
   end
 
-  def save_images(images, product_id)
-    images.each do |image|
+  def save_images(images, product_id, product_variants)
+    images.each_with_index do |image, idx|
       image_position = image['position']
       image_url = image['src']
       image_variant_ids = image['variant_ids']
+      image_variant_id = product_variants[idx]['id']
+
+      image_variant_ids = image_variant_ids.length > 0 ? image_variant_ids : [ image_variant_id ]
 
       Image.where({
         product_id: product_id, position: image_position
@@ -58,7 +61,7 @@ class SaveToDbJob < ApplicationJob
       })
 
       save_variants(product_variants, product_id)
-      save_images(product_images, product_id)
+      save_images(product_images, product_id, product_variants)
     end
   end
 end
