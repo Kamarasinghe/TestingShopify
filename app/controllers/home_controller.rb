@@ -6,7 +6,7 @@ class HomeController < ShopifyApp::AuthenticatedController
     # products_1 = ShopifyAPI::Product.find(:all, params: { limit: 2, page: 1 })
     # products_2 = ShopifyAPI::Product.find(:all, params: { limit: 2, page: 2 })
 
-    product_count = ShopifyAPI::Product.count()
+    product_count = ShopifyAPI::Product.count
     i = 1
     while (i <= 1) do
       products = ShopifyAPI::Product.find(:all, :params => { :limit => 2, :page => i })
