@@ -16,8 +16,8 @@ class SaveToDbJob < ApplicationJob
       variant_position = variant['position']
 
       Variant.where([
-        'product_title = :product_title and title = :title', 
-        { product_title: product_title, title: variant_title }
+        'product_id = :product_id and title = :title', 
+        { product_id: product_id, title: variant_title }
       ]).first_or_create({
         product_id: product_id,
         title: variant_title,
