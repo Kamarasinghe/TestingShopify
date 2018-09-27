@@ -11,7 +11,7 @@ class SaveToDbJob < ApplicationJob
   def save_variants(variants)
     variants.each do |variant|
       puts '&&&&&&&&&&&&&&&&&&&'
-      variant.inspect
+      puts variant
       puts '&&&&&&&&&&&&&&&&&&&'
 
       product_id = variant['product_id']
