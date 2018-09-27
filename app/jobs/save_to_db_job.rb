@@ -27,7 +27,7 @@ class SaveToDbJob < ApplicationJob
       })
 
       puts 'THIS IS THE RESPONSE !!!!!!!!!!'
-      puts response.inspect
+      puts response.errors.full_messages.first
       puts 'THIS IS THE RESPONSE @@@@@@@@@@'
 
     end
