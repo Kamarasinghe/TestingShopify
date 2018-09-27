@@ -3,6 +3,9 @@ class SaveToDbJob < ApplicationJob
 
   def perform(products)
     products_parsed = JSON.parse(products)
+    puts '@@@@@@@@@@@@@@@@@@@@@'
+    puts products_parsed.inspect
+    puts '@@@@@@@@@@@@@@@@@@@@@'
     
     products_parsed.each do |product|
       product_id = product['id']
