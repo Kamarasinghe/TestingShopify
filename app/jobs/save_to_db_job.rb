@@ -18,12 +18,12 @@ class SaveToDbJob < ApplicationJob
       Variant.where([
         'product_title = :product_title and title = :title', 
         { product_title: product_title, title: variant_title }
-        ]).first_or_create({
-          product_id: product_id,
-          title: variant_title,
-          price: variant_price,
-          position: variant_position
-        })
+      ]).first_or_create({
+        product_id: product_id,
+        title: variant_title,
+        price: variant_price,
+        position: variant_position
+      })
     end
   end
 
