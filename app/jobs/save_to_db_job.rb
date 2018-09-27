@@ -19,7 +19,8 @@ class SaveToDbJob < ApplicationJob
         product_id: product_id, variant_id: variant_id 
       }).first_or_create({
         price: variant_price,
-        position: variant_position
+        position: variant_position,
+        title: variant_title
       })
     end
   end
