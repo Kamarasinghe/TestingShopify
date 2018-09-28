@@ -15,13 +15,18 @@ class SaveToDbJob < ApplicationJob
       variant_price = variant['price'] 
       variant_position = variant['position']
 
-      Variant.where({
+      response = Variant.where({
         product_id: product_id, variant_id: variant_id 
       }).first_or_create({
         price: variant_price,
         position: variant_position,
         title: variant_title
       })
+
+      puts 'RESPONSE FOR IMAGE !!!!!!!!!!!!!!'
+      puts response.errors.full_messages
+      puts 'RESPONSE FOR IMAGE @@@@@@@@@@@@@@'
+      
     end
   end
 
@@ -41,9 +46,9 @@ class SaveToDbJob < ApplicationJob
         variant_ids: image_variant_ids
       })
 
-      puts 'RESPONSE !!!!!!!!!!!!!!'
+      puts 'RESPONSE FOR IMAGE !!!!!!!!!!!!!!'
       puts response.errors.full_messages
-      puts 'RESPONSE @@@@@@@@@@@@@@'
+      puts 'RESPONSE FOR IMAGE @@@@@@@@@@@@@@'
     end
   end
 
