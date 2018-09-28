@@ -26,7 +26,7 @@ class SaveToDbJob < ApplicationJob
       puts 'RESPONSE FOR IMAGE !!!!!!!!!!!!!!'
       puts response.errors.full_messages
       puts 'RESPONSE FOR IMAGE @@@@@@@@@@@@@@'
-      
+
     end
   end
 
@@ -70,7 +70,7 @@ class SaveToDbJob < ApplicationJob
       })
 
       save_variants(product_variants, product_id)
-      save_images(product_images, product_id, product_variants)
+      # save_images(product_images, product_id, product_variants)
     end
   end
 end
