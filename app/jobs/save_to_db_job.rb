@@ -40,8 +40,9 @@ class SaveToDbJob < ApplicationJob
       image_variant_ids = image_variant_ids.length > 0 ? image_variant_ids : [ image_variant_id ]
 
       response = Image.where({
-        product_id: product_id, position: image_position
+        product_id: product_id, variant_id: image_variant_id
       }).first_or_create({
+        position: image_position
         image_url: image_url,
         variant_ids: image_variant_ids
       })
