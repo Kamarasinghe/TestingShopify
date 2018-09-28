@@ -42,7 +42,7 @@ class SaveToDbJob < ApplicationJob
       response = Image.where({
         product_id: product_id, variant_id: image_variant_id
       }).first_or_create({
-        position: image_position
+        position: image_position,
         image_url: image_url,
         variant_ids: image_variant_ids
       })
