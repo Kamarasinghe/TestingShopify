@@ -1,3 +1,3 @@
 class Image < ApplicationRecord
-  belongs_to :variant, primary_key: :variant_id
+  belongs_to :variant
 end
