@@ -4,6 +4,7 @@ class SaveToDbJob < ApplicationJob
   rescue_from(Exception) do |exception|
     puts '@@@@@@@@@@@@@@@@@@@@@@'
     puts exception.message
+    puts '!!!!!!!!!!!!!!!!!!!!!!'
     puts exception.backtrace
     puts '@@@@@@@@@@@@@@@@@@@@@@'
   end
@@ -22,11 +23,6 @@ class SaveToDbJob < ApplicationJob
         position: variant_position,
         title: variant_title
       })
-
-      puts 'RESPONSE FOR IMAGE !!!!!!!!!!!!!!'
-      puts response.errors.full_messages
-      puts 'RESPONSE FOR IMAGE @@@@@@@@@@@@@@'
-
     end
   end
 
